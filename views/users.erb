@@ -1,4 +1,45 @@
 <section class="clearfix">
-	<h1>Users</h1>
-	<p>Users go here</p>
+
+	<% if flash %>
+		<%= flash.message %>
+	<% end %>
+
+	<h2>Users</h2>
+
+	<table class="users__table">
+		<thead>
+			<tr>
+				<th>Name</th><th>Email</th><th>Created Date</th><th>Admin?</th><th></th><th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% 
+				@users.each do |user| 
+				creation_time = user.created.localtime.strftime("%m/%d/%Y %H:%M:%S%p")
+				admin_status = (user.is_admin == 0.to_s) ? '' : 'checked="checked"'
+			%>
+			<tr>
+				<td><%= user.user_name %></td>
+				<td><%= user.user_email %></td>
+				<td><%= creation_time %></td>
+				<td>
+					<input type="checkbox" <%= admin_status %> disabled>
+				</td>
+				<td>
+					<a href="/users/edit/<%= user.id %>" class="button">Edit</a>
+				</td>
+				<td>
+					<form method="post" action="/users/delete">
+						<input type="hidden" name="user_id" value="<%= user.id %>" />
+						<input type="hidden" name="nonce" value="<%= @nonce %>" />
+						<input class="button" type="submit" value="Delete">
+					</form>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<a class="button button--primary" href="/users/new">Add User</a>
+
 </section>

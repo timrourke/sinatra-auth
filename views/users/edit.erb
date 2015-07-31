@@ -1,0 +1,49 @@
+<section class="clearfix">
+	<h1>Users: Edit</h1>
+
+	<% if flash %>
+		<%= flash.message %>
+	<% end %>
+
+	<% admin_status = (@user.is_admin == 0.to_s) ? '' : 'checked="checked"' %>
+
+	<form method="post" action="/users/edit">
+		
+		<label for="user_name">
+			User Name
+			<input type="text" name="user_name" id="user_name" value="<%= @user.user_name %>">
+		</label>
+
+		<label for="user_email">
+			User Email
+			<input type="email" name="user_email" id="user_email" value="<%= @user.user_email %>">
+		</label>
+
+		<label for="user_is_admin">
+			User Admin Status
+			<p>Set user to admin?</p>
+			<input type="checkbox" name="user_is_admin" id="user_is_admin" <%= admin_status %>>
+		</label>
+
+		<label for="user_password">
+			Password
+			<p>todo: allow password reset</p>
+		</label>
+
+		<input type="hidden" name="user_id" value="<%= @user.id %>" />
+		<input type="hidden" name="nonce" value="<%= @nonce %>">
+
+
+		<input class="button--primary" type="submit" value="Edit">
+
+	</form>
+
+	<form method="post" action="/users/delete">
+		<input type="hidden" name="user_id" value="<%= @user.id %>" />
+		<input type="hidden" name="nonce" value="<%= @nonce %>" />
+		<input class="button" type="submit" value="Delete User">
+	</form>
+
+	<p><a href="/users">Back to Users</a></p>
+
+</section>

@@ -115,7 +115,8 @@ form img {
 }
 
 input[type="submit"]:hover,
-button:hover {
+button:hover,
+.button:hover {
 	cursor:pointer;
 	background-color:#d0ffff;
 	transform:scale(1.025);
@@ -159,4 +160,41 @@ form .button--primary {
 	background:linear-gradient(to bottom, #00B0FF, #008CCC);
 	color:white;
 	text-align:center;
+}
+
+.users__table {
+	width:100%;
+	border-collapse: collapse;
+}
+
+.users__table th,
+.users__table td {
+	text-align:left;
+}
+
+.users__table tr {
+	border-top:1px solid #ccc;
+}
+
+.users__table thead tr {
+	border:none;
+}
+
+.users__table td {
+	padding:0.5em 0;
+}
+
+.users__table .button {
+	font-size:0.8em;
+	margin:0;
+	padding:0;
+	line-height:1;
+	max-width:none;
+	min-width:none;
+	height:1em;
+}
+
+.users__table .button:hover {
+	background-color:transparent;
+	transform:none;
 }

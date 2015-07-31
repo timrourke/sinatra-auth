@@ -1,0 +1,44 @@
+<section class="clearfix">
+	<h1>Users: Create New User</h1>
+
+	<% if flash %>
+		<%= flash.message %>
+	<% end %>
+
+	<form method="post" action="/users/new">
+		
+		<label for="user_name">
+			Your name
+			<input type="text" name="user_name" id="user_name" placeholder="name" required>
+		</label>
+
+		<label for="user_email">
+			Email
+			<input type="email" name="user_email" id="user_email" placeholder="email" required>
+		</label>
+
+		<label for="user_is_admin">
+			User Admin Status
+			<p>Set user to admin?</p>
+			<input type="checkbox" name="user_is_admin" id="user_is_admin">
+		</label>
+
+		<label for="user_password">
+			Password
+			<input type="password" name="user_password" id="user_password" required>
+		</label>
+
+		<label for="user_password_confirm">
+			Confirm Password
+			<input type="password" name="user_password_confirm" id="user_password_confirm" required>
+		</label>
+
+		<input type="hidden" name="nonce" value="<%= @nonce %>">
+
+		<input type="submit" value="Sign Up">
+
+	</form>
+
+	<p><a href="/users">Back to Users</a></p>
+
+</section>
