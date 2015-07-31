@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Sinatra Auth</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body class="<%= body_class %>">
+  <!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+	<div class="wrapper">
+		<header class="site-header clearfix">
+			<div class="site-title">
+				<h1><a href="/" rel="bookmark">Sinatra-Auth</a></h1>
+			</div>
+			<nav class="site-nav">
+				<ul>
+					<li class="site-nav__item"><a href="/">Home</a></li>
+					<li class="site-nav__item"><a href="/users">Users</a></li>
+					<% if !session[:user] %>
+					<li class="site-nav__item"><a href="/users/login">Log In</a></li>
+					<li class="site-nav__item"><a href="/users/signup">Sign Up</a></li>
+					<% end %>
+					<% if session[:user] %>
+					<li class="site-nav__item"><a href="/users/logout">Log Out</a></li>
+					<% end %>
+				</ul>
+			</nav>
+		</header>
+		<main class="site-main">
+			<div class="content-wrapper">
+				<%= yield %>			
+			</div>
+		</main>
+	</div>
+
+	<footer class="site-footer">
+		<p>&copy; 2015 Tim Rourke</p>
+	</footer>
+
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="/js/global.js"></script>
+</body>
+</html>

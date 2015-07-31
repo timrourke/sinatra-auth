@@ -1,0 +1,12 @@
+<section class="clearfix">
+	<h1>Not Authenticated</h1>
+
+	<% if flash %>
+		<%= flash.message %>
+	<% end %>
+
+	<p>Sorry, you must be logged in to see this page.</p>
+
+	<p>Already a user? <a href="/users/login">Log in here.</a></p>
+
+</section>

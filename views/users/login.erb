@@ -1,0 +1,28 @@
+<section class="clearfix">
+	<h1>Users: Log In</h1>
+
+	<% if flash %>
+		<%= flash.message %>
+	<% end %>
+
+	<form method="post" action="/users/login">
+		
+		<label for="user_email">
+			Email
+			<input type="email" name="user_email" id="user_email" placeholder="email" required>
+		</label>
+
+		<label for="user_password">
+			Password
+			<input type="password" name="user_password" id="user_password" required>
+		</label>
+
+		<input type="hidden" name="nonce" value="<%= @nonce %>">
+
+		<input type="submit" value="Log In">
+
+	</form>
+
+	<p>Are you a new user? <a href="/users/signup">Sign up here.</a></p>
+
+</section>
