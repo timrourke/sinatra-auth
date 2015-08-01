@@ -1,20 +1,12 @@
 <section class="clearfix">
-	<h1>Users: Sign Up</h1>
+	<h1>Users: Request a new confirmation email</h1>
+	<p>Have you lost your account confirmation email? User this form to request a new email to verify your email address and activate your account.</p>
 
 	<% if flash %>
 		<%= h flash.message %>
 	<% end %>
 
-	<% if @user %>
-		<h1>Welcome, <%= h @user.user_name %>!</h1>
-	<% end %>
-
-	<form method="post" action="/users/signup">
-		
-		<label for="user_name">
-			Your name
-			<input type="text" name="user_name" id="user_name" placeholder="name" required>
-		</label>
+	<form method="post" action="/users/request-new-confirmation-email">
 
 		<label for="user_email">
 			Email
@@ -26,14 +18,9 @@
 			<input type="password" name="user_password" id="user_password" required>
 		</label>
 
-		<label for="user_password_confirm">
-			Confirm Password
-			<input type="password" name="user_password_confirm" id="user_password_confirm" required>
-		</label>
-
 		<input type="hidden" name="nonce" value="<%= @nonce %>">
 
-		<input type="submit" value="Sign Up">
+		<input type="submit" value="Submit">
 
 	</form>
 

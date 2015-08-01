@@ -2,7 +2,7 @@
 	<h1>Users: Create New User</h1>
 
 	<% if flash %>
-		<%= flash.message %>
+		<%= h flash.message %>
 	<% end %>
 
 	<form method="post" action="/users/new">
@@ -33,7 +33,7 @@
 			<input type="password" name="user_password_confirm" id="user_password_confirm" required>
 		</label>
 
-		<input type="hidden" name="nonce" value="<%= @nonce %>">
+		<input type="hidden" name="nonce" value="<%= h @nonce %>">
 
 		<input type="submit" value="Sign Up">
 

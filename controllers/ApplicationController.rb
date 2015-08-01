@@ -2,10 +2,13 @@ class ApplicationController < Sinatra::Base
 	require 'bundler'
 	Bundler.require()
 
-	
+	# Enable sessions, and set secrets for Rack sessions and Rack nonce
+	Dir.glob('./.config/*.rb').each{
+		|file| require file
+	}
+
 	enable :sessions
 	
-  
   #Implement flash messages
 	class FlashMessage
 	  def initialize(session)
@@ -24,6 +27,10 @@ class ApplicationController < Sinatra::Base
 	end
 
 	helpers do
+		def h(text)
+	    Rack::Utils.escape_html(text)
+	  end
+
 	  def flash
 	    @flash ||= FlashMessage.new(session)
 	  end

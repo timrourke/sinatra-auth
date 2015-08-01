@@ -9,7 +9,7 @@
 
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
-<body class="<%= body_class %>">
+<body class="<% if body_class %><%= body_class %><% end %>">
   <!--[if lt IE 8]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->

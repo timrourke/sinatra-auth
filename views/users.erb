@@ -19,9 +19,9 @@
 				admin_status = (user.is_admin == 0.to_s) ? '' : 'checked="checked"'
 			%>
 			<tr>
-				<td><%= user.user_name %></td>
-				<td><%= user.user_email %></td>
-				<td><%= creation_time %></td>
+				<td><%= h user.user_name %></td>
+				<td><%= h user.user_email %></td>
+				<td><%= h creation_time %></td>
 				<td>
 					<input type="checkbox" <%= admin_status %> disabled>
 				</td>
@@ -30,8 +30,8 @@
 				</td>
 				<td>
 					<form method="post" action="/users/delete">
-						<input type="hidden" name="user_id" value="<%= user.id %>" />
-						<input type="hidden" name="nonce" value="<%= @nonce %>" />
+						<input type="hidden" name="user_id" value="<%= h user.id %>" />
+						<input type="hidden" name="nonce" value="<%= h @nonce %>" />
 						<input class="button" type="submit" value="Delete">
 					</form>
 				</td>

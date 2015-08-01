@@ -1,5 +1,5 @@
 <% if @user %>
-	<h1>Welcome, <%= @user.user_name %>!</h1>
+	<h1>Welcome, <%= h @user.user_name %>!</h1>
 <% end %>
 
 <p>Thanks for logging in!</p>

@@ -2,7 +2,7 @@
 	<h1>Users: Log In</h1>
 
 	<% if flash %>
-		<%= flash.message %>
+		<%= h flash.message %>
 	<% end %>
 
 	<form method="post" action="/users/login">
@@ -17,11 +17,15 @@
 			<input type="password" name="user_password" id="user_password" required>
 		</label>
 
-		<input type="hidden" name="nonce" value="<%= @nonce %>">
+		<input type="hidden" name="nonce" value="<%= h @nonce %>">
 
 		<input type="submit" value="Log In">
 
 	</form>
+
+	<% if @request_new_email_confirmation_link %>
+		<%= @request_new_email_confirmation_link %>
+	<% end %>
 
 	<p>Are you a new user? <a href="/users/signup">Sign up here.</a></p>
 
